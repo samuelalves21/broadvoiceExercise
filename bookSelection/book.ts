@@ -32,7 +32,7 @@ export class Book {
         await this.page.locator('[aria-label="pesquisar"]').click()
         await this.page.locator(`[data-product-name="${bookName2}"]`, {hasText: "George Orwell"}).locator('.track').first().click()
         const authorName2 = await this.page.locator('#productPageRightSectionTop-author-lnk', {hasText: "George Orwell"}).textContent() //guarda o autor do 2º livro
-        expect(authorName2).toEqual(authorName) //compara o autor do livro 1 com o autor do livro 2
+        expect(authorName2).toEqual(authorName) //compara o autor do livro 1 com o autor do livro 2!
     }
 
     async validateAuthor(author: string) {
