@@ -10,7 +10,7 @@ Check that the number of pages is "344."
 Ensure that the dimensions of the book are "156 x 238 x 22 mm."*/
 
 test.beforeEach(async({page}) => {
-    await page.goto("https://www.bertrand.pt/")
+    await page.goto("https://www.bertrand.pt/") //para abrir o URL para cada test case
 })
 
     test('Scenario 1', async({page}) => {

@@ -18,21 +18,21 @@ export class Book {
     }
 
 
-    async compareAuthors(bookName1: string, bookName2: string) {
+    async compareAuthors(bookName1: string, bookName2: string) { //ao introduzir o nome de 2 livros, vai confirmar se o autor dos 2 livros é o George Orwell
         const searchBook = this.page.getByPlaceholder('pesquisar')
         await searchBook.click()
         await searchBook.fill(bookName1)
         await this.page.locator('[aria-label="pesquisar"]').click()
         await this.page.locator(`[data-product-name="${bookName1}"]`, {hasText: "George Orwell"}).locator('.track').first().click()
-        const authorName = await this.page.locator('#productPageRightSectionTop-author-lnk', {hasText: "George Orwell"}).textContent()
+        const authorName = await this.page.locator('#productPageRightSectionTop-author-lnk', {hasText: "George Orwell"}).textContent() //guarda o autor do 1º livro
 
         await this.page.goBack()
         await searchBook.click()
         await searchBook.fill(bookName2)
         await this.page.locator('[aria-label="pesquisar"]').click()
         await this.page.locator(`[data-product-name="${bookName2}"]`, {hasText: "George Orwell"}).locator('.track').first().click()
-        const authorName2 = await this.page.locator('#productPageRightSectionTop-author-lnk', {hasText: "George Orwell"}).textContent()
-        expect(authorName2).toEqual(authorName)
+        const authorName2 = await this.page.locator('#productPageRightSectionTop-author-lnk', {hasText: "George Orwell"}).textContent() //guarda o autor do 2º livro
+        expect(authorName2).toEqual(authorName) //compara o autor do livro 1 com o autor do livro 2
     }
 
     async validateAuthor(author: string) {
@@ -61,6 +61,6 @@ export class Book {
     }
 
     async validateFlag() {
-        await expect(this.page.locator('#productPageRightSectionTop-languageFlag')).toHaveClass('icon language-flag Inglês') //confirma se a bandeira é do UK
+        await expect(this.page.locator('#productPageRightSectionTop-languageFlag')).toHaveClass('icon language-flag Inglês') //confirma se a bandeira é do UK. Tive dificuldades em saber como criar este assertion, pois não conhecia o método toHaveClass
     }
 }
