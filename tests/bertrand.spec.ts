@@ -14,7 +14,6 @@ test.beforeEach(async({page}) => {
 })
 
     test('Scenario 1', async({page}) => {
-        test.setTimeout(10000)
 
         const book = new Book(page)
         await book.searchBook("1984", "George Orwell")
@@ -31,7 +30,6 @@ Search for the book "1984."
 Verify that the book "A Quinta dos Animais" is authored by the same author.*/
 
     test('Scenario 2', async({page}) => {
-        test.setTimeout(10000)
 
         const book = new Book(page)
         await book.compareAuthors('1984', 'A Quinta dos Animais')      
@@ -45,7 +43,6 @@ Validate the idiom is "Inglês" and the flag of UK is displayed*/
 
 
     test('Scenario 3', async({page}) => {
-        test.setTimeout(10000)
 
         const book = new Book(page)
         await book.searchBook('Do Not Disturb', 'Freida McFadden')      
